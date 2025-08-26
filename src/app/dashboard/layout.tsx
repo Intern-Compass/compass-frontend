@@ -13,7 +13,7 @@ export default function DashboardLayout({
       <header>
         <SidebarTrigger />
       </header>
-      <main>{children}</main>
+      <main className="w-full">{children}</main>
     </SidebarProvider>
   );
 }
