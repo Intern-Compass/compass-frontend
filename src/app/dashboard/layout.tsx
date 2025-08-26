@@ -1,13 +1,19 @@
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  return (
-    <div>
-        Sidebar goes here
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 
-        {children}
-    </div>
+import { AppSidebar } from "@/app/dashboard/(sidebar)/app-sidebar";
+
+export default function DashboardLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <SidebarProvider>
+      <AppSidebar />
+      <header>
+        <SidebarTrigger />
+      </header>
+      <main>{children}</main>
+    </SidebarProvider>
   );
 }

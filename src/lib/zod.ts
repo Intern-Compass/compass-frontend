@@ -45,7 +45,7 @@ export const SignupFormSchema = z
       .max(30, {
         message: "First name cannot exceed 30 characters.",
       })
-      .regex(/^[A-Za-z][A-Za-z'’-]{1,29}$/, {
+      .regex(/^[A-Za-z][A-Za-z'-]{1,29}$/, {
         message:
           "First name should start with a letter, and can contain letters, dashes and apostrophes.",
       }),
