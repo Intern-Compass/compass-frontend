@@ -1,5 +1,7 @@
 "use client"
 
+import React from "react"
+import Select from "react-select"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { toast } from "sonner"
@@ -9,7 +11,6 @@ import { Button } from "@/components/ui/button"
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -22,17 +23,17 @@ import { UsersRound } from "lucide-react"
 
 
 const FormSchema = z.object({
-  skills: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
+  skills: z.array(z.string()).min(1, {
+  message: "Select at least one skill.",
   }),
   experience: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
+    message: "Input at least one experience.",
   }),
   interests: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
+    message: "Input at least one interest.",
   }),
   expectations: z.string().min(10, {
-    message: "Username must be at least 10 characters.",
+    message: "Tell us your expectations.",
   }),
 })
 
@@ -40,7 +41,7 @@ export default function AccountPage() {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      skills: "",
+      skills: [],
       experience: "",
       interests: "",
       expectations: "",
@@ -56,6 +57,25 @@ export default function AccountPage() {
       ),
     })
   }
+
+  type OptionType = {
+  value: string
+  label: string
+  }
+
+  const skillsOptions: OptionType[] = [
+    { value: 'javascript', label: 'JavaScript' },
+    { value: 'python', label: 'Python' },
+    { value: 'java', label: 'Java' },
+    { value: 'csharp', label: 'C#' },
+    { value: 'ruby', label: 'Ruby' },
+    { value: 'php', label: 'PHP' },
+    { value: 'html', label: 'HTML' },
+    { value: 'css', label: 'CSS' },
+    { value: 'react', label: 'React' },
+    { value: 'nodejs', label: 'Node.js' },
+    // Add more options as needed
+  ];
 
   return (
     <div className="flex-1 bg-white p-4 md:p-8">
@@ -108,8 +128,22 @@ export default function AccountPage() {
                 <FormItem>
                   <FormLabel className="block text-muted-foreground">Skills</FormLabel>
                   <FormControl>
-                    <Input  type="text" className="w-full p-3 text-foreground  border border-muted-foreground-50 rounded-md placeholder:text-muted-foreground-50" placeholder="Tap to select" {...field} />
+                    <Select<OptionType, true>
+                      isMulti
+                      options={skillsOptions}
+                      classNamePrefix="select" 
+                      className="basic-multi-select w-full text-foreground border-muted-foreground-50 rounded-md placeholder:text-muted-foreground-50" 
+                      placeholder="Tap to select" 
+                      // {...field} 
+                      
+                      value={skillsOptions.filter((opt) => field.value?.includes(opt.value))}
+                      onChange={(selected) => field.onChange(selected.map((opt) => opt.value))}
+                      onBlur={field.onBlur}
+                      name={field.name}
+                      ref={field.ref}
+                      />
                   </FormControl>
+                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -122,6 +156,7 @@ export default function AccountPage() {
                     <FormControl>
                       <Input type="text" className="w-full p-3 text-foreground  border border-muted-foreground-50 rounded-md placeholder:text-muted-foreground-50" placeholder="Enter experience acquired" {...field}/>
                     </FormControl>
+                    <FormMessage />
                 </FormItem>
               )}
             />
@@ -134,6 +169,7 @@ export default function AccountPage() {
                     <FormControl>
                       <Input type="text" className="w-full p-3 text-foreground  border border-muted-foreground-50 rounded-md placeholder:text-muted-foreground-50" placeholder="Enter interests" {...field}/>
                     </FormControl>
+                    <FormMessage />
                 </FormItem>
               )}
             />
@@ -146,6 +182,7 @@ export default function AccountPage() {
                     <FormControl>
                       <Textarea className="w-full p-3 text-foreground border border-muted-foreground-50 rounded-md placeholder:text-muted-foreground" placeholder="Describe your expectations for your internship period" {...field}/>
                     </FormControl>
+                    <FormMessage />
                 </FormItem>
               )}
             />
