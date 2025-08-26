@@ -69,7 +69,8 @@
   --color-success-dark: rgba(11, 70, 39, 1);
   --color-success-base: rgba(31, 193, 107, 1);
   --color-waiting-action: rgba(143, 115, 0, 1);
-  --color-card: rgba(252, 252, 252, 1)
+  --color-card: rgba(252, 252, 252, 1);
+  --color-border: rgba(224, 224, 224, 1);
 }
 
 :root {

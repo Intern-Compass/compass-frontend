@@ -30,7 +30,7 @@ export const LoginFormSchema = z
       .regex(/[^A-Za-z0-9]/, {
         message: "Password must contain at least one special character.",
       }),
-    rememberMe: z.boolean().default(false),
+    rememberMe: z.boolean(),
   })
   .required();
 

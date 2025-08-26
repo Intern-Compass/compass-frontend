@@ -22,6 +22,8 @@ import { SignupFormSchema } from "@/lib/zod";
 
 import { EyeIcon, EyeOffIcon } from "lucide-react";
 
+import { cn } from "@/lib/utils";
+
 export const SignupForm = () => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
@@ -51,15 +53,24 @@ export const SignupForm = () => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="w-2/3 space-y-6">
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="w-full space-y-5 mb-4"
+      >
         <FormField
           control={form.control}
           name="firstName"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>First name</FormLabel>
+              <FormLabel className="font-medium text-sm leading-5 text-muted-foreground">
+                First name
+              </FormLabel>
               <FormControl>
-                <Input placeholder="shadcn" {...field} />
+                <Input
+                  placeholder="John"
+                  className="text-foreground border border-input p-3 leading-6 placeholder:text-muted-foreground-50"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -71,9 +82,15 @@ export const SignupForm = () => {
           name="surname"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Surname</FormLabel>
+              <FormLabel className="font-medium text-sm leading-5 text-muted-foreground">
+                Surname
+              </FormLabel>
               <FormControl>
-                <Input placeholder="shadcn" {...field} />
+                <Input
+                  placeholder="Doe"
+                  className="text-foreground border border-input p-3 leading-6 placeholder:text-muted-foreground-50"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -85,9 +102,16 @@ export const SignupForm = () => {
           name="email"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Email</FormLabel>
+              <FormLabel className="font-medium text-sm leading-5 text-muted-foreground">
+                Email
+              </FormLabel>
               <FormControl>
-                <Input type="email" placeholder="shadcn" {...field} />
+                <Input
+                  type="email"
+                  placeholder="firstname.lastname@mtn.com"
+                  className="text-foreground border border-input p-3 leading-6 placeholder:text-muted-foreground-50"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -99,7 +123,10 @@ export const SignupForm = () => {
           name="password"
           render={({ field }) => (
             <FormItem>
-              <FormLabel htmlFor="password">
+              <FormLabel
+                htmlFor="password"
+                className="font-medium text-sm leading-5 text-muted-foreground"
+              >
                 Password
               </FormLabel>
               <FormControl>
@@ -109,8 +136,8 @@ export const SignupForm = () => {
                     aria-describedby="password-constraints"
                     autoComplete="current-password"
                     id="password"
-                    placeholder="Enter password"
-                    className="pr-12"
+                    placeholder="*********"
+                    className="text-foreground border border-input p-3 pr-11 leading-6 placeholder:text-muted-foreground-50"
                     {...field}
                   />
                   <Button
@@ -124,15 +151,9 @@ export const SignupForm = () => {
                     className="absolute right-2 top-1/2 -translate-y-1/2 disabled:cursor-not-allowed"
                   >
                     {showPassword ? (
-                      <EyeOffIcon
-                        aria-hidden="true"
-                        className="w-4 h-4"
-                      />
+                      <EyeOffIcon aria-hidden="true" className="w-4 h-4" />
                     ) : (
-                      <EyeIcon
-                        aria-hidden="true"
-                        className="w-4 h-4"
-                      />
+                      <EyeIcon aria-hidden="true" className="w-4 h-4" />
                     )}
                     <span className="sr-only">
                       {showPassword ? "Hide" : "Show"} password
@@ -145,7 +166,17 @@ export const SignupForm = () => {
           )}
         />
 
-        <Button type="submit">Create Account</Button>
+        <Button
+          type="submit"
+          className={cn(
+            "w-full py-2 px-8 rounded-[9999px] font-medium leading-5 text-muted-foreground hover:bg-transparent",
+            form.formState.isValid
+              ? "bg-primary cursor-pointer text-foreground hover:bg-primary"
+              : "bg-muted cursor-not-allowed hover:bg-muted"
+          )}
+        >
+          Create Account
+        </Button>
       </form>
     </Form>
   );

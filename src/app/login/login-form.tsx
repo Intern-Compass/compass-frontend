@@ -18,7 +18,6 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Label } from "@/components/ui/label";
 
 import { EyeIcon, EyeOffIcon } from "lucide-react";
 
@@ -34,6 +33,7 @@ export const LoginForm = () => {
     defaultValues: {
       email: "",
       password: "",
+      rememberMe: false
     },
   });
 
@@ -63,7 +63,6 @@ export const LoginForm = () => {
           render={({ field }) => (
             <FormItem>
               <FormLabel
-                htmlFor="email"
                 className="font-medium text-sm leading-5 text-muted-foreground"
               >
                 Email
@@ -71,7 +70,7 @@ export const LoginForm = () => {
               <FormControl>
                 <Input
                   type="email"
-                  placeholder="youremail@gmail.com"
+                  placeholder="firstname.lastname@mtn.com"
                   className="text-foreground border border-input p-3 leading-6 placeholder:text-muted-foreground-50"
                   {...field}
                 />
@@ -159,7 +158,7 @@ export const LoginForm = () => {
           className={cn(
             "w-full py-2 px-8 rounded-[9999px] font-medium leading-5 text-muted-foreground hover:bg-transparent",
             form.formState.isValid
-              ? "bg-primary cursor-pointer"
+              ? "bg-primary cursor-pointer text-foreground hover:bg-primary"
               : "bg-muted cursor-not-allowed hover:bg-muted"
           )}
         >
