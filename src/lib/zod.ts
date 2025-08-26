@@ -92,3 +92,20 @@ export const SignupFormSchema = z
       }),
   })
   .required();
+
+export const ProfileFormSchema = z
+  .object({
+    skills: z.array(z.string()).min(1, {
+      message: "Select at least one skill.",
+    }),
+    experience: z.string().min(2, {
+      message: "Input at least one experience.",
+    }),
+    interests: z.string().min(2, {
+      message: "Input at least one interest.",
+    }),
+    expectations: z.string().min(10, {
+      message: "Tell us your expectations.",
+    }),
+  })
+  .required();

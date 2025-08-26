@@ -1,6 +1,8 @@
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { Toaster } from "@/components/ui/sonner";
 
 import { AppSidebar } from "@/app/dashboard/(sidebar)/app-sidebar";
+
 
 export default function DashboardLayout({
   children,
@@ -14,6 +16,8 @@ export default function DashboardLayout({
         <SidebarTrigger />
       </header>
       <main className="w-full">{children}</main>
+
+      <Toaster />
     </SidebarProvider>
   );
 }
