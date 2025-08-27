@@ -71,6 +71,11 @@
   --color-waiting-action: rgba(143, 115, 0, 1);
   --color-card: rgba(252, 252, 252, 1);
   --color-border: rgba(224, 224, 224, 1);
+
+  --color-sidebar-foreground: rgba(32, 32, 32, 1);
+  --color-sidebar-background: rgba(249, 249, 249, 1);
+  --color-sidebar-foreground-70: rgba(131, 131, 131, 1);
+  --color-sidebar-active: rgba(232, 232, 232, 1);
 }
 
 :root {
