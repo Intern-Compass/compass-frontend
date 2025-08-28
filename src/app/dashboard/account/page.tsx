@@ -20,6 +20,7 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 
 import { UsersRound } from "lucide-react"
+import { is } from "date-fns/locale"
 
 
 const FormSchema = z.object({
@@ -38,6 +39,8 @@ const FormSchema = z.object({
 })
 
 export default function AccountPage() {
+
+  const [isSubmitted, setIsSubmitted] = React.useState(false);
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -49,6 +52,7 @@ export default function AccountPage() {
   })
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
+    setIsSubmitted(true);
     toast("You submitted the following values", {
       description: (
         <pre className="mt-2 w-[320px] rounded-md bg-neutral-950 p-4">
@@ -119,6 +123,14 @@ export default function AccountPage() {
          <h2 className="text-2xl font-medium mb-6">More Information</h2>
 
          {/* Form */}
+         {isSubmitted ? (
+          <div>
+          <div>{form.getValues("skills").map(skill => <span>{skill}</span>)}</div>
+          <div>{form.getValues("experience")}</div>
+          <div>{form.getValues("interests")}</div>
+          <div>{form.getValues("expectations")}</div>
+         </div>
+         ) :(
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="w-4/5 space-y-6 flex flex-col px-4">
             <FormField
@@ -189,6 +201,7 @@ export default function AccountPage() {
             <Button className="bg-muted text-muted-foreground px-6 py-3 rounded-3xl transition self-end hover:bg-primary hover:text-foreground">Upload</Button>
           </form>
         </Form>
+        )}
       </div>
     </div>
   )
