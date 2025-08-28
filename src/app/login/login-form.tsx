@@ -18,12 +18,12 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Label } from "@/components/ui/label";
 
 import { EyeIcon, EyeOffIcon } from "lucide-react";
 
 import { LoginFormSchema } from "@/lib/zod";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 export const LoginForm = () => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -33,6 +33,7 @@ export const LoginForm = () => {
     defaultValues: {
       email: "",
       password: "",
+      rememberMe: false
     },
   });
 
@@ -52,15 +53,27 @@ export const LoginForm = () => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="w-2/3 space-y-6">
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="w-full space-y-5 mb-4"
+      >
         <FormField
           control={form.control}
           name="email"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Email</FormLabel>
+              <FormLabel
+                className="font-medium text-sm leading-5 text-muted-foreground"
+              >
+                Email
+              </FormLabel>
               <FormControl>
-                <Input type="email" placeholder="shadcn" {...field} />
+                <Input
+                  type="email"
+                  placeholder="firstname.lastname@mtn.com"
+                  className="text-foreground border border-input p-3 leading-6 placeholder:text-muted-foreground-50"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -72,7 +85,12 @@ export const LoginForm = () => {
           name="password"
           render={({ field }) => (
             <FormItem>
-              <FormLabel htmlFor="password">Password</FormLabel>
+              <FormLabel
+                htmlFor="password"
+                className="font-medium text-sm leading-5 text-muted-foreground"
+              >
+                Password
+              </FormLabel>
               <FormControl>
                 <div className="relative">
                   <Input
@@ -80,8 +98,8 @@ export const LoginForm = () => {
                     aria-describedby="password-constraints"
                     autoComplete="current-password"
                     id="password"
-                    placeholder="Enter password"
-                    className="pr-12"
+                    placeholder="*********"
+                    className="text-foreground border border-input p-3 pr-11 leading-6 placeholder:text-muted-foreground-50"
                     {...field}
                   />
                   <Button
@@ -110,7 +128,7 @@ export const LoginForm = () => {
           )}
         />
 
-        <div>
+        <div className="flex items-center justify-between">
           <FormField
             control={form.control}
             name="rememberMe"
@@ -120,6 +138,7 @@ export const LoginForm = () => {
                   <Checkbox
                     checked={field.value}
                     onCheckedChange={field.onChange}
+                    className="data-[state=checked]:text-foreground"
                   />
                 </FormControl>
                 <FormLabel className="text-sm font-normal">
@@ -129,10 +148,22 @@ export const LoginForm = () => {
             )}
           />
 
-          <Link href="/">Forgot Password?</Link>
+          <Link href="/" className="underline leading-5 text-sm">
+            Forgot Password?
+          </Link>
         </div>
 
-        <Button type="submit">Login</Button>
+        <Button
+          type="submit"
+          className={cn(
+            "w-full py-2 px-8 rounded-[9999px] font-medium leading-5 text-muted-foreground hover:bg-transparent",
+            form.formState.isValid
+              ? "bg-primary cursor-pointer text-foreground hover:bg-primary"
+              : "bg-muted cursor-not-allowed hover:bg-muted"
+          )}
+        >
+          Login
+        </Button>
       </form>
     </Form>
   );

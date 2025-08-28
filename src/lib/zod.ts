@@ -30,7 +30,7 @@ export const LoginFormSchema = z
       .regex(/[^A-Za-z0-9]/, {
         message: "Password must contain at least one special character.",
       }),
-    rememberMe: z.boolean().default(false),
+    rememberMe: z.boolean(),
   })
   .required();
 
@@ -90,5 +90,22 @@ export const SignupFormSchema = z
       .regex(/[^A-Za-z0-9]/, {
         message: "Password must contain at least one special character.",
       }),
+  })
+  .required();
+
+export const ProfileFormSchema = z
+  .object({
+    skills: z.array(z.string()).min(1, {
+      message: "Select at least one skill.",
+    }),
+    experience: z.string().min(2, {
+      message: "Input at least one experience.",
+    }),
+    interests: z.string().min(2, {
+      message: "Input at least one interest.",
+    }),
+    expectations: z.string().min(10, {
+      message: "Tell us your expectations.",
+    }),
   })
   .required();

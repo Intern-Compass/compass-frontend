@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
 import { mtnBrighterSans } from "@/app/fonts";
@@ -16,7 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${mtnBrighterSans.variable} antialiased`}>
-      <body className="font-primary">{children}</body>
+      <body className="font-sans">{children}</body>
     </html>
   );
 }
