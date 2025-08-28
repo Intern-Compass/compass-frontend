@@ -24,6 +24,10 @@ import { UsersRound } from "lucide-react";
 import { ProfileFormSchema } from "@/lib/zod";
 
 export default function AccountPage() {
+
+  const [isSubmitted, setIsSubmitted] = React.useState(false);
+ 
+  
   const form = useForm<z.infer<typeof ProfileFormSchema>>({
     resolver: zodResolver(ProfileFormSchema),
     defaultValues: {
@@ -34,7 +38,8 @@ export default function AccountPage() {
     },
   });
 
-  function onSubmit(data: z.infer<typeof ProfileFormSchema>) {
+    function onSubmit(data: z.infer<typeof ProfileFormSchema>) {
+    setIsSubmitted(true);
     toast("You submitted the following values", {
       description: (
         <pre className="mt-2 w-[320px] rounded-md bg-neutral-950 p-4">
@@ -52,17 +57,17 @@ export default function AccountPage() {
   };
 
   const skillsOptions: OptionType[] = [
-    { value: "cybersecurity", label: "Cybersecurity" },
-    { value: "developer", label: "Developer" },
-    { value: "frontend", label: "Front-end" },
-    { value: "backend", label: "Back-end" },
-    { value: "ui/ux", label: "UI/UX" },
+    { value: "Cybersecurity", label: "Cybersecurity" },
+    { value: "Developer", label: "Developer" },
+    { value: "Frontend", label: "Front-end" },
+    { value: "Backend", label: "Back-end" },
+    { value: "UI/UX", label: "UI/UX" },
   ];
 
   return (
     <div className="flex-1 bg-white p-4 md:p-8">
       {/* Profile Section */}
-      <div className="mb-8 bg-card rounded-lg p-6">
+      <div className="bg-card rounded-lg p-6">
         <div className="mb-4 flex items-center">
           <UsersRound />
           <h2 className="text-2xl font-medium ml-2">Profile</h2>
@@ -71,138 +76,165 @@ export default function AccountPage() {
         <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           <div className="p-4">
             <h3 className="text-foreground font-medium mb-2">Name</h3>
-            <p className="text-muted-foreground">John Doe</p>
+            <p className="text-muted-foreground text-sm">John Doe</p>
           </div>
           <div className="p-4">
             <h3 className="text-foreground font-medium mb-2">Email</h3>
-            <p className="text-muted-foreground">johndoe@gmail.com</p>
+            <p className="text-muted-foreground text-sm">johndoe@gmail.com</p>
           </div>
           <div className="p-4">
-            <h3 className="text-foreground font-medium mb-2">
-              Internship Duration
-            </h3>
-            <p className="text-muted-foreground">6 months</p>
+            <h3 className="text-foreground font-medium mb-2">Internship Duration</h3>
+            <p className="text-muted-foreground text-sm">6 months</p>
           </div>
           <div className="p-4">
             <h3 className="text-foreground font-medium mb-2">School</h3>
-            <p className="text-muted-foreground">Convenant University</p>
+            <p className="text-muted-foreground text-sm">Convenant University</p>
           </div>
           <div className="p-4">
             <h3 className="text-foreground font-medium mb-2">Phone no</h3>
-            <p className="text-muted-foreground">08062061234</p>
+            <p className="text-muted-foreground text-sm">08062061234</p>
           </div>
           <div className="p-4">
             <h3 className="text-foreground font-medium mb-2">Department</h3>
-            <p className="text-muted-foreground">Information Technology</p>
+            <p className="text-muted-foreground text-sm">Information Technology</p>
           </div>
         </div>
       </div>
 
       {/* More Information Section */}
-      <div className="bg-card rounded-lg p-6">
-        <h2 className="text-2xl font-medium mb-6">More Information</h2>
+      {isSubmitted ? (
+        <div className="bg-card rounded-lg p-6">
+                <div className="mb-6 flex items-center justify-between">
+                  <h2 className="text-2xl font-medium">More Information</h2>
+                  <button className="px-6 py-2 rounded-3xl font-bold text-sm transition bg-primary text-foreground hover:bg-muted hover:text-muted-foreground"
+                  onClick={() => setIsSubmitted(false)}>
+                        Edit
+                  </button>
+                </div>
 
-        {/* Form */}
-        <Form {...form}>
-          <form
-            onSubmit={form.handleSubmit(onSubmit)}
-            className="w-4/5 space-y-6 flex flex-col px-4"
-          >
-            <FormField
-              control={form.control}
-              name="skills"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="block text-muted-foreground">
-                    Skills
-                  </FormLabel>
-                  <FormControl>
-                    <Select<OptionType, true>
-                      isMulti
-                      options={skillsOptions}
-                      classNamePrefix="select"
-                      className="basic-multi-select w-full text-foreground border-muted-foreground-50 rounded-md text-sm placeholder:text-muted-foreground-50"
-                      placeholder="Tap to select"
-                      value={skillsOptions.filter((opt) =>
-                        field.value?.includes(opt.value)
+              <div className="w-full">
+                  <div className="p-4">
+                    <h3 className="text-muted-foreground text-sm font-medium mb-2">Skills</h3>
+                    <div className="text-foreground flex gap-2">{form.getValues("skills").map((skill, i) => <p key={i} className="bg-muted py-2 px-4 rounded-3xl ">{skill}</p>)}</div>
+                  </div>
+                  <div className="p-4">
+                    <h3 className="text-muted-foreground text-sm font-medium mb-2">Experience</h3>
+                    <div>{form.getValues("experience")}</div>
+                  </div>
+                  <div className="p-4">
+                    <h3 className="text-muted-foreground text-sm font-medium mb-2">Interests</h3>
+                    <div>{form.getValues("interests")}</div>
+                  </div>
+                  <div className="p-4">
+                    <h3 className="text-muted-foreground text-sm font-medium mb-2">Expectations</h3>
+                    <div>{form.getValues("expectations")}</div>
+                  </div>
+              </div>
+        </div>
+        ) :(
+            <div className="bg-card rounded-lg p-6">
+                <h2 className="text-2xl font-medium mb-6">More Information</h2>
+                <Form {...form}>
+                  <form
+                    onSubmit={form.handleSubmit(onSubmit)}
+                    className="w-4/5 space-y-6 flex flex-col px-4"
+                  >
+                    <FormField
+                      control={form.control}
+                      name="skills"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="block text-muted-foreground">
+                            Skills
+                          </FormLabel>
+                          <FormControl>
+                            <Select<OptionType, true>
+                              isMulti
+                              options={skillsOptions}
+                              classNamePrefix="select"
+                              className="basic-multi-select w-full text-foreground border-muted-foreground-50 rounded-md text-sm placeholder:text-muted-foreground-50"
+                              placeholder="Tap to select"
+                              value={skillsOptions.filter((opt) =>
+                                field.value?.includes(opt.value)
+                              )}
+                              onChange={(selected) =>
+                                field.onChange(selected.map((opt) => opt.value))
+                              }
+                              onBlur={field.onBlur}
+                              name={field.name}
+                              ref={field.ref}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
                       )}
-                      onChange={(selected) =>
-                        field.onChange(selected.map((opt) => opt.value))
-                      }
-                      onBlur={field.onBlur}
-                      name={field.name}
-                      ref={field.ref}
                     />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="experience"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="block text-muted-foreground">
-                    Experience
-                  </FormLabel>
-                  <FormControl>
-                    <Input
-                      type="text"
-                      className="w-full p-3 text-foreground  border border-muted-foreground-50 rounded-md placeholder:text-muted-foreground-50"
-                      placeholder="Enter experience acquired"
-                      {...field}
+                    <FormField
+                      control={form.control}
+                      name="experience"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="block text-muted-foreground">
+                            Experience
+                          </FormLabel>
+                          <FormControl>
+                            <Input
+                              type="text"
+                              className="w-full p-3 text-foreground  border border-muted-foreground-50 rounded-md placeholder:text-muted-foreground-50"
+                              placeholder="Enter experience acquired"
+                              {...field}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="interests"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="block text-muted-foreground">
-                    Interests
-                  </FormLabel>
-                  <FormControl>
-                    <Input
-                      type="text"
-                      className="w-full p-3 text-foreground  border border-muted-foreground-50 rounded-md placeholder:text-muted-foreground-50"
-                      placeholder="Enter interests"
-                      {...field}
+                    <FormField
+                      control={form.control}
+                      name="interests"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="block text-muted-foreground">
+                            Interests
+                          </FormLabel>
+                          <FormControl>
+                            <Input
+                              type="text"
+                              className="w-full p-3 text-foreground  border border-muted-foreground-50 rounded-md placeholder:text-muted-foreground-50"
+                              placeholder="Enter interests"
+                              {...field}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="expectations"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="block text-muted-foreground">
-                    Expectations
-                  </FormLabel>
-                  <FormControl>
-                    <Textarea
-                      className="w-full p-3 text-foreground border border-muted-foreground-50 rounded-md placeholder:text-muted-foreground"
-                      placeholder="Describe your expectations for your internship period"
-                      {...field}
+                    <FormField
+                      control={form.control}
+                      name="expectations"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="block text-muted-foreground">
+                            Expectations
+                          </FormLabel>
+                          <FormControl>
+                            <Textarea
+                              className="w-full p-3 text-foreground border border-muted-foreground-50 rounded-md placeholder:text-muted-foreground"
+                              placeholder="Describe your expectations for your internship period"
+                              {...field}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <Button className="bg-muted text-muted-foreground px-6 py-3 rounded-3xl transition self-end hover:bg-primary hover:text-foreground">
-              Upload
-            </Button>
-          </form>
-        </Form>
-      </div>
+                    <Button className="bg-muted text-muted-foreground px-6 py-3 rounded-3xl font-bold text-sm transition self-end hover:bg-primary hover:text-foreground">
+                      Upload
+                    </Button>
+                  </form>
+                </Form>
+            </div>
+      )}
     </div>
-  );
+  )
 }
