@@ -1,5 +1,7 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+
 import { useState } from "react";
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -25,6 +27,8 @@ import { EyeIcon, EyeOffIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export const SignupForm = () => {
+  const router = useRouter();
+
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const form = useForm<z.infer<typeof SignupFormSchema>>({
@@ -42,6 +46,8 @@ export const SignupForm = () => {
   };
 
   function onSubmit(data: z.infer<typeof SignupFormSchema>) {
+    router.push("/login");
+
     // toast("You submitted the following values", {
     //   description: (
     //     <pre className="mt-2 w-[320px] rounded-md bg-neutral-950 p-4">

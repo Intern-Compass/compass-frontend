@@ -1,5 +1,7 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+
 import { useState } from "react";
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -26,6 +28,8 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 export const LoginForm = () => {
+  const router = useRouter();
+
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const form = useForm<z.infer<typeof LoginFormSchema>>({
@@ -42,6 +46,8 @@ export const LoginForm = () => {
   };
 
   function onSubmit(data: z.infer<typeof LoginFormSchema>) {
+    router.push("/dashboard");
+
     // toast("You submitted the following values", {
     //   description: (
     //     <pre className="mt-2 w-[320px] rounded-md bg-neutral-950 p-4">

@@ -56,7 +56,7 @@ export default function LoginPage() {
             width={461}
             height={609}
             priority
-            className="w-full max-h-[300px] mx-auto object-[50%_12.5%]"
+            className="w-full max-h-[330px] mx-auto object-[50%_12.5%]"
           />
           <figcaption className="bg-black px-6 py-4">
             <p className="text-white text-4xl font-medium leading-10 mb-3">
