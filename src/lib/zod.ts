@@ -105,7 +105,7 @@ export const ProfileFormSchema = z
       message: "Input at least one interest.",
     }),
     expectations: z.string().min(10, {
-      message: "Tell us your expectations.",
+      message: "Tell us your expectations in at least one sentence.",
     }),
   })
   .required();
