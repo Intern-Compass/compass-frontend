@@ -1,5 +1,4 @@
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
-import { Toaster } from "@/components/ui/sonner";
 
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
@@ -35,8 +34,6 @@ export default function DashboardLayout({
         </header>
         <main className="w-full">{children}</main>
       </div>
-
-      <Toaster />
     </SidebarProvider>
   );
 }

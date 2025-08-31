@@ -2,7 +2,12 @@ import Image from "next/image";
 
 import { SidebarHeader } from "@/components/ui/sidebar";
 
+import { useSidebar } from "@/components/ui/sidebar";
+import { cn } from "@/lib/utils";
+
 export const Header = () => {
+  const { open } = useSidebar();
+
   return (
     <SidebarHeader className="mb-6 ml-3">
       <Image
@@ -11,7 +16,7 @@ export const Header = () => {
         width={91}
         height={45}
         priority
-        className="w-[91px] h-[45px]"
+        className={cn("w-[91px] h-[45px]", !open && "hidden")}
       />
     </SidebarHeader>
   );

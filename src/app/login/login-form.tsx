@@ -6,7 +6,7 @@ import { useState } from "react";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-// import { toast } from "sonner";
+import { toast } from "sonner";
 import { z } from "zod";
 
 import { Button } from "@/components/ui/button";
@@ -21,7 +21,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 
-import { EyeIcon, EyeOffIcon } from "lucide-react";
+import { CircleAlert, EyeIcon, EyeOffIcon } from "lucide-react";
 
 import { LoginFormSchema } from "@/lib/zod";
 import Link from "next/link";
@@ -37,7 +37,7 @@ export const LoginForm = () => {
     defaultValues: {
       email: "",
       password: "",
-      rememberMe: false
+      rememberMe: false,
     },
   });
 
@@ -46,7 +46,7 @@ export const LoginForm = () => {
   };
 
   function onSubmit(data: z.infer<typeof LoginFormSchema>) {
-    router.push("/dashboard");
+    // router.push("/dashboard");
 
     // toast("You submitted the following values", {
     //   description: (
@@ -55,6 +55,64 @@ export const LoginForm = () => {
     //     </pre>
     //   ),
     // });
+    toast(
+      <div className="flex items-start gap-3 font-sans">
+        <CircleAlert className="text-error-base" />
+
+        <div className="flex flex-col gap-2.5 text-sm leading-5">
+          <span className="text-foreground font-medium">
+            Email already registered.
+          </span>
+          <span className="text-foreground/75 font-normal">
+            Already have an account? [Log in instead]
+          </span>
+        </div>
+      </div>,
+      {
+        classNames: {
+          toast: "!bg-error-light",
+        },
+        position: "top-center",
+      }
+    );
+    toast(
+      <div className="flex items-start gap-3 font-sans">
+        <CircleAlert className="text-error-base" />
+
+        <div className="flex flex-col gap-2.5 text-sm leading-5">
+          <span className="text-foreground font-medium">
+            Invalid Email or Password.
+          </span>
+          <span className="text-foreground/75 font-normal">
+            Please check your credentials and try again.
+          </span>
+        </div>
+      </div>,
+      {
+        classNames: {
+          toast: "!bg-error-light",
+        },
+        position: "top-center",
+      }
+    );
+    toast(
+      <div className="flex items-start gap-3 font-sans">
+        <CircleAlert className="text-error-base" />
+
+        <div className="flex flex-col gap-2.5 text-sm leading-5">
+          <span className="text-foreground font-medium">User not found.</span>
+          <span className="text-foreground/75 font-normal">
+            Please register your account first.
+          </span>
+        </div>
+      </div>,
+      {
+        classNames: {
+          toast: "!bg-error-light",
+        },
+        position: "top-center",
+      }
+    );
   }
 
   return (
@@ -68,9 +126,7 @@ export const LoginForm = () => {
           name="email"
           render={({ field }) => (
             <FormItem>
-              <FormLabel
-                className="font-medium text-sm leading-5 text-muted-foreground"
-              >
+              <FormLabel className="font-medium text-sm leading-5 text-muted-foreground">
                 Email
               </FormLabel>
               <FormControl>
