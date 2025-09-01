@@ -119,13 +119,13 @@ export const LoginForm = () => {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="w-full space-y-5 mb-4"
+        className="w-full my-[5.6875rem]"
       >
         <FormField
           control={form.control}
           name="email"
           render={({ field }) => (
-            <FormItem>
+            <FormItem className="mb-6">
               <FormLabel className="font-medium text-sm leading-5 text-muted-foreground">
                 Email
               </FormLabel>
@@ -146,7 +146,7 @@ export const LoginForm = () => {
           control={form.control}
           name="password"
           render={({ field }) => (
-            <FormItem>
+            <FormItem className="mb-6">
               <FormLabel
                 htmlFor="password"
                 className="font-medium text-sm leading-5 text-muted-foreground"
@@ -189,8 +189,7 @@ export const LoginForm = () => {
             </FormItem>
           )}
         />
-
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between mb-8">
           <FormField
             control={form.control}
             name="rememberMe"
@@ -218,7 +217,7 @@ export const LoginForm = () => {
         <Button
           type="submit"
           className={cn(
-            "w-full py-2 px-8 rounded-[9999px] font-medium leading-5 text-muted-foreground hover:bg-transparent",
+            "w-full mb-4 py-2 px-8 rounded-[9999px] font-medium leading-5 text-muted-foreground hover:bg-transparent",
             form.formState.isValid
               ? "bg-primary cursor-pointer text-foreground hover:bg-primary"
               : "bg-muted cursor-not-allowed hover:bg-muted"
