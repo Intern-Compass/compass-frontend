@@ -43,9 +43,16 @@ export default function SignupPage() {
               © 2025 MTN. All rights reserved.
             </p>
             <div className="flex items-center gap-3">
-              <Link href="#">Terms & Conditions</Link>
+              <a href="https://www.mtn.ng/legal/" target="_blank">
+                Terms & Conditions
+              </a>
               <div className="bg-border h-2.5 w-px" />
-              <Link href="#">Privacy Policy</Link>
+              <a
+                href="https://www.mtn.ng/legal/privacy-and-data-protection-policy"
+                target="_blank"
+              >
+                Privacy Policy
+              </a>
             </div>
           </footer>
         </div>
