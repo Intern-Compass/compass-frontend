@@ -19,7 +19,7 @@ export default function SignupPage() {
       <div className="flex justify-evenly items-center gap-12">
         <div className="flex flex-col">
           <header className="mb-10">
-            <h1 className="font-medium text-4xl leading-10 mb-2">Y'ello</h1>
+            <h1 className="font-medium text-4xl leading-10 mb-2">{"Y'ello"}</h1>
             <h2 className="text-xl leading-7">
               Create an account to get started
             </h2>

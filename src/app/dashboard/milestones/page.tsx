@@ -131,7 +131,7 @@ export default async function MilestonesPage() {
               </div>
               <figcaption className="max-w-[640px] mx-auto text-center">
                 <h2 className="font-medium text-xl leading-7 mb-0.5">
-                  You haven't started any projects yet
+                  You {"haven't"} started any projects yet
                 </h2>
                 <p className="leading-6 text-muted-foreground">
                   Get assigned projects and assignments by your supervisor to

@@ -19,7 +19,7 @@ export default function LoginPage() {
       <div className="flex justify-evenly items-center gap-12">
         <div className="flex flex-col">
           <header className="mb-10">
-            <h1 className="font-medium text-4xl leading-10 mb-2">Y'ello</h1>
+            <h1 className="font-medium text-4xl leading-10 mb-2">{"Y'ello"}</h1>
             <h2 className="text-xl leading-7">
               Welcome to the Intern-Supervisor Matching Platform
             </h2>
@@ -28,7 +28,7 @@ export default function LoginPage() {
             <div className="md:max-w-[416px]">
               <LoginForm />
               <p className="text-muted-foreground text-center text-sm">
-                Don't have an account?{" "}
+                {"Don't"} have an account?{" "}
                 <Link
                   href="/signup"
                   className="underline leading-5 text-sm text-foreground"

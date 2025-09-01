@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
+import Providers from "@/app/providers";
+
 import { Toaster } from "@/components/ui/sonner";
 
 import { mtnBrighterSans } from "@/app/fonts";
@@ -18,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${mtnBrighterSans.variable} antialiased`}>
       <body className="font-sans">
-        {children}
+        <Providers>{children}</Providers>
 
         <Toaster />
       </body>
