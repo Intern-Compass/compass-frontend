@@ -180,7 +180,7 @@ export default function AccountPage() {
                           <FormControl>
                             <Input
                               type="text"
-                              className="w-full p-3 text-foreground  border border-muted-foreground-50 rounded-md placeholder:text-muted-foreground-50"
+                              className="w-full p-3 text-foreground border border-muted-foreground-50 rounded-md placeholder:text-muted-foreground-50"
                               placeholder="Enter experience acquired"
                               {...field}
                             />
@@ -219,8 +219,7 @@ export default function AccountPage() {
                           </FormLabel>
                           <FormControl>
                             <Textarea
-                              rows={4}
-                              className="w-full p-3 text-foreground border border-muted-foreground-50 rounded-md placeholder:text-muted-foreground"
+                              className="w-full p-3 h-24 resize-none text-foreground border border-muted-foreground-50 rounded-md placeholder:text-muted-foreground"
                               placeholder="Describe your expectations for your internship period"
                               {...field}
                             />
@@ -238,4 +237,4 @@ export default function AccountPage() {
       )}
     </div>
   )
-}
+}1
