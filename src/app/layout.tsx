@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
+import Providers from "@/app/providers";
+
+import { Toaster } from "@/components/ui/sonner";
+
 import { mtnBrighterSans } from "@/app/fonts";
 
 export const metadata: Metadata = {
@@ -15,7 +19,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${mtnBrighterSans.variable} antialiased`}>
-      <body className="font-sans">{children}</body>
+      <body className="font-sans">
+        <Providers>{children}</Providers>
+
+        <Toaster />
+      </body>
     </html>
   );
 }

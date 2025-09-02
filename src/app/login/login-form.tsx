@@ -1,10 +1,12 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+
 import { useState } from "react";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-// import { toast } from "sonner";
+import { toast } from "sonner";
 import { z } from "zod";
 
 import { Button } from "@/components/ui/button";
@@ -19,13 +21,15 @@ import {
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 
-import { EyeIcon, EyeOffIcon } from "lucide-react";
+import { CircleAlert, EyeIcon, EyeOffIcon } from "lucide-react";
 
 import { LoginFormSchema } from "@/lib/zod";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 export const LoginForm = () => {
+  const router = useRouter();
+
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const form = useForm<z.infer<typeof LoginFormSchema>>({
@@ -33,7 +37,7 @@ export const LoginForm = () => {
     defaultValues: {
       email: "",
       password: "",
-      rememberMe: false
+      rememberMe: false,
     },
   });
 
@@ -42,6 +46,8 @@ export const LoginForm = () => {
   };
 
   function onSubmit(data: z.infer<typeof LoginFormSchema>) {
+    // router.push("/dashboard");
+
     // toast("You submitted the following values", {
     //   description: (
     //     <pre className="mt-2 w-[320px] rounded-md bg-neutral-950 p-4">
@@ -49,22 +55,78 @@ export const LoginForm = () => {
     //     </pre>
     //   ),
     // });
+    toast(
+      <div className="flex items-start gap-3 font-sans">
+        <CircleAlert className="text-error-base" />
+
+        <div className="flex flex-col gap-2.5 text-sm leading-5">
+          <span className="text-foreground font-medium">
+            Email already registered.
+          </span>
+          <span className="text-foreground/75 font-normal">
+            Already have an account? [Log in instead]
+          </span>
+        </div>
+      </div>,
+      {
+        classNames: {
+          toast: "!bg-error-light",
+        },
+        position: "top-center",
+      }
+    );
+    toast(
+      <div className="flex items-start gap-3 font-sans">
+        <CircleAlert className="text-error-base" />
+
+        <div className="flex flex-col gap-2.5 text-sm leading-5">
+          <span className="text-foreground font-medium">
+            Invalid Email or Password.
+          </span>
+          <span className="text-foreground/75 font-normal">
+            Please check your credentials and try again.
+          </span>
+        </div>
+      </div>,
+      {
+        classNames: {
+          toast: "!bg-error-light",
+        },
+        position: "top-center",
+      }
+    );
+    toast(
+      <div className="flex items-start gap-3 font-sans">
+        <CircleAlert className="text-error-base" />
+
+        <div className="flex flex-col gap-2.5 text-sm leading-5">
+          <span className="text-foreground font-medium">User not found.</span>
+          <span className="text-foreground/75 font-normal">
+            Please register your account first.
+          </span>
+        </div>
+      </div>,
+      {
+        classNames: {
+          toast: "!bg-error-light",
+        },
+        position: "top-center",
+      }
+    );
   }
 
   return (
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="w-full space-y-5 mb-4"
+        className="w-full my-[5.6875rem]"
       >
         <FormField
           control={form.control}
           name="email"
           render={({ field }) => (
-            <FormItem>
-              <FormLabel
-                className="font-medium text-sm leading-5 text-muted-foreground"
-              >
+            <FormItem className="mb-6">
+              <FormLabel className="font-medium text-sm leading-5 text-muted-foreground">
                 Email
               </FormLabel>
               <FormControl>
@@ -84,7 +146,7 @@ export const LoginForm = () => {
           control={form.control}
           name="password"
           render={({ field }) => (
-            <FormItem>
+            <FormItem className="mb-6">
               <FormLabel
                 htmlFor="password"
                 className="font-medium text-sm leading-5 text-muted-foreground"
@@ -127,8 +189,7 @@ export const LoginForm = () => {
             </FormItem>
           )}
         />
-
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between mb-8">
           <FormField
             control={form.control}
             name="rememberMe"
@@ -156,7 +217,7 @@ export const LoginForm = () => {
         <Button
           type="submit"
           className={cn(
-            "w-full py-2 px-8 rounded-[9999px] font-medium leading-5 text-muted-foreground hover:bg-transparent",
+            "w-full mb-4 py-2 px-8 rounded-[9999px] font-medium leading-5 text-muted-foreground hover:bg-transparent",
             form.formState.isValid
               ? "bg-primary cursor-pointer text-foreground hover:bg-primary"
               : "bg-muted cursor-not-allowed hover:bg-muted"

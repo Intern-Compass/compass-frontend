@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { Separator } from "@/components/ui/separator";
+
 import { LoginForm } from "@/app/login/login-form";
 
 export default function LoginPage() {
@@ -16,10 +18,10 @@ export default function LoginPage() {
           className="w-[91px] h-[45px]"
         />
       </div>
-      <div className="flex justify-evenly items-center gap-12">
+      <div className="flex justify-evenly items-center gap-12 pt-10">
         <div className="flex flex-col">
-          <header className="mb-10">
-            <h1 className="font-medium text-4xl leading-10 mb-2">Y'ello</h1>
+          <header>
+            <h1 className="font-medium text-4xl leading-10 mb-1">{"Y'ello"}</h1>
             <h2 className="text-xl leading-7">
               Welcome to the Intern-Supervisor Matching Platform
             </h2>
@@ -28,7 +30,7 @@ export default function LoginPage() {
             <div className="md:max-w-[416px]">
               <LoginForm />
               <p className="text-muted-foreground text-center text-sm">
-                Don't have an account?{" "}
+                {"Don't"} have an account?{" "}
                 <Link
                   href="/signup"
                   className="underline leading-5 text-sm text-foreground"
@@ -43,9 +45,19 @@ export default function LoginPage() {
               © 2025 MTN. All rights reserved.
             </p>
             <div className="flex items-center gap-3">
-              <Link href="#">Terms & Conditions</Link>
-              <div className="bg-border h-2.5 w-px" />
-              <Link href="#">Privacy Policy</Link>
+              <a href="https://www.mtn.ng/legal/" target="_blank">
+                Terms & Conditions
+              </a>
+              <Separator
+                orientation="vertical"
+                className="!h-2.5 bg-border"
+              />
+              <a
+                href="https://www.mtn.ng/legal/privacy-and-data-protection-policy"
+                target="_blank"
+              >
+                Privacy Policy
+              </a>
             </div>
           </footer>
         </div>
@@ -56,9 +68,9 @@ export default function LoginPage() {
             width={461}
             height={609}
             priority
-            className="w-full max-h-[300px] mx-auto object-[50%_12.5%]"
+            className="w-full max-h-[500px] mx-auto object-[50%_12.5%]"
           />
-          <figcaption className="bg-black px-6 py-4">
+          <figcaption className="bg-black px-10 py-[2.3125rem]">
             <p className="text-white text-4xl font-medium leading-10 mb-3">
               Apply & Learn
             </p>
