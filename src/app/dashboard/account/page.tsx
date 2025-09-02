@@ -67,7 +67,7 @@ export default function AccountPage() {
   return (
     <div className="flex-1 bg-white p-4 md:p-8">
       {/* Profile Section */}
-      <div className="bg-card rounded-lg p-6">
+      <div className="bg-card rounded-lg p-2 md:p-6">
         <div className="mb-4 flex items-center">
           <UsersRound />
           <h2 className="text-2xl font-medium ml-2">Profile</h2>
@@ -103,7 +103,7 @@ export default function AccountPage() {
 
       {/* More Information Section */}
       {isSubmitted ? (
-        <div className="bg-card rounded-lg p-6">
+        <div className="bg-card rounded-lg p-2 md:p-6">
                 <div className="mb-6 flex items-center justify-between">
                   <h2 className="text-2xl font-medium">More Information</h2>
                   <button className="px-6 py-2 rounded-3xl font-bold text-sm transition bg-primary text-foreground hover:bg-muted hover:text-muted-foreground"
@@ -115,7 +115,7 @@ export default function AccountPage() {
               <div className="w-full">
                   <div className="p-4">
                     <h3 className="text-muted-foreground text-sm font-medium mb-2">Skills</h3>
-                    <div className="text-foreground flex gap-2">{form.getValues("skills").map((skill, i) => <p key={i} className="bg-muted py-2 px-4 rounded-3xl ">{skill}</p>)}</div>
+                    <div className="text-foreground flex flex-wrap gap-2">{form.getValues("skills").map((skill, i) => <p key={i} className="bg-muted py-2 px-4 rounded-3xl ">{skill}</p>)}</div>
                   </div>
                   <div className="p-4">
                     <h3 className="text-muted-foreground text-sm font-medium mb-2">Experience</h3>
@@ -132,12 +132,12 @@ export default function AccountPage() {
               </div>
         </div>
         ) :(
-            <div className="bg-card rounded-lg p-6">
+            <div className="bg-card rounded-lg p-2 md:p-6">
                 <h2 className="text-2xl font-medium mb-6">More Information</h2>
                 <Form {...form}>
                   <form
                     onSubmit={form.handleSubmit(onSubmit)}
-                    className="w-4/5 space-y-6 flex flex-col px-4"
+                    className="lg:w-4/5 space-y-6 flex flex-col px-4"
                   >
                     <FormField
                       control={form.control}
@@ -180,7 +180,7 @@ export default function AccountPage() {
                           <FormControl>
                             <Input
                               type="text"
-                              className="w-full p-3 text-foreground  border border-muted-foreground-50 rounded-md placeholder:text-muted-foreground-50"
+                              className="w-full p-3 text-foreground border border-muted-foreground-50 rounded-md placeholder:text-muted-foreground-50"
                               placeholder="Enter experience acquired"
                               {...field}
                             />
@@ -219,7 +219,7 @@ export default function AccountPage() {
                           </FormLabel>
                           <FormControl>
                             <Textarea
-                              className="w-full p-3 text-foreground border border-muted-foreground-50 rounded-md placeholder:text-muted-foreground"
+                              className="w-full p-3 h-24 resize-none text-foreground border border-muted-foreground-50 rounded-md placeholder:text-muted-foreground"
                               placeholder="Describe your expectations for your internship period"
                               {...field}
                             />
@@ -237,4 +237,4 @@ export default function AccountPage() {
       )}
     </div>
   )
-}
+}1
