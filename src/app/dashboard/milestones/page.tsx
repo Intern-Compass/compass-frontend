@@ -58,6 +58,237 @@ export default async function MilestonesPage() {
       assigner: "Blessing Musa",
       status: "overdue",
     },
+    {
+      id: "728ed52f",
+      name: "UX Report",
+      date: new Date("2025-02-02"),
+      assigner: "Blessing Musa",
+      status: "upcoming",
+    },
+    {
+      id: "728ed52f",
+      name: "My Lagos App Design",
+      date: new Date("2025-01-19"),
+      assigner: "Blessing Musa",
+      status: "overdue",
+    },
+    {
+      id: "728ed52f",
+      name: "MyMTN App Redesign",
+      date: new Date("2025-01-20"),
+      assigner: "Blessing Musa",
+      status: "upcoming",
+    },
+    {
+      id: "728ed52f",
+      name: "UX Report",
+      date: new Date("2025-01-21"),
+      assigner: "Blessing Musa",
+      status: "completed",
+    },
+    {
+      id: "728ed52f",
+      name: "My Lagos App Design",
+      date: new Date("2025-01-19"),
+      assigner: "Blessing Musa",
+      status: "overdue",
+    },
+    {
+      id: "728ed52f",
+      name: "MyMTN App Redesign",
+      date: new Date("2025-01-20"),
+      assigner: "Blessing Musa",
+      status: "upcoming",
+    },
+    {
+      id: "728ed52f",
+      name: "UX Report",
+      date: new Date("2025-01-21"),
+      assigner: "Blessing Musa",
+      status: "completed",
+    },
+    {
+      id: "728ed52f",
+      name: "My Lagos App Design",
+      date: new Date("2025-01-19"),
+      assigner: "Blessing Musa",
+      status: "overdue",
+    },
+    {
+      id: "728ed52f",
+      name: "MyMTN App Redesign",
+      date: new Date("2025-01-20"),
+      assigner: "Blessing Musa",
+      status: "upcoming",
+    },
+    {
+      id: "728ed52f",
+      name: "UX Report",
+      date: new Date("2025-01-21"),
+      assigner: "Blessing Musa",
+      status: "completed",
+    },
+    {
+      id: "728ed52f",
+      name: "My Lagos App Design",
+      date: new Date("2025-01-19"),
+      assigner: "Blessing Musa",
+      status: "overdue",
+    },
+    {
+      id: "728ed52f",
+      name: "MyMTN App Redesign",
+      date: new Date("2025-01-20"),
+      assigner: "Blessing Musa",
+      status: "upcoming",
+    },
+    {
+      id: "728ed52f",
+      name: "UX Report",
+      date: new Date("2025-01-21"),
+      assigner: "Blessing Musa",
+      status: "completed",
+    },
+    {
+      id: "728ed52f",
+      name: "My Lagos App Design",
+      date: new Date("2025-01-19"),
+      assigner: "Blessing Musa",
+      status: "overdue",
+    },
+    {
+      id: "728ed52f",
+      name: "MyMTN App Redesign",
+      date: new Date("2025-01-20"),
+      assigner: "Blessing Musa",
+      status: "upcoming",
+    },
+    {
+      id: "728ed52f",
+      name: "UX Report",
+      date: new Date("2025-01-21"),
+      assigner: "Blessing Musa",
+      status: "completed",
+    },
+    {
+      id: "728ed52f",
+      name: "My Lagos App Design",
+      date: new Date("2025-01-19"),
+      assigner: "Blessing Musa",
+      status: "overdue",
+    },
+    {
+      id: "728ed52f",
+      name: "MyMTN App Redesign",
+      date: new Date("2025-01-20"),
+      assigner: "Blessing Musa",
+      status: "upcoming",
+    },
+    {
+      id: "728ed52f",
+      name: "UX Report",
+      date: new Date("2025-01-21"),
+      assigner: "Blessing Musa",
+      status: "completed",
+    },
+    {
+      id: "728ed52f",
+      name: "My Lagos App Design",
+      date: new Date("2025-01-19"),
+      assigner: "Blessing Musa",
+      status: "overdue",
+    },
+    {
+      id: "728ed52f",
+      name: "MyMTN App Redesign",
+      date: new Date("2025-01-20"),
+      assigner: "Blessing Musa",
+      status: "upcoming",
+    },
+    {
+      id: "728ed52f",
+      name: "UX Report",
+      date: new Date("2025-01-21"),
+      assigner: "Blessing Musa",
+      status: "completed",
+    },
+    {
+      id: "728ed52f",
+      name: "My Lagos App Design",
+      date: new Date("2025-01-19"),
+      assigner: "Blessing Musa",
+      status: "overdue",
+    },
+    {
+      id: "728ed52f",
+      name: "MyMTN App Redesign",
+      date: new Date("2025-01-20"),
+      assigner: "Blessing Musa",
+      status: "upcoming",
+    },
+    {
+      id: "728ed52f",
+      name: "UX Report",
+      date: new Date("2025-01-21"),
+      assigner: "Blessing Musa",
+      status: "completed",
+    },
+    {
+      id: "728ed52f",
+      name: "UX Report",
+      date: new Date("2025-01-22"),
+      assigner: "Blessing Musa",
+      status: "completed",
+    },
+    {
+      id: "728ed52f",
+      name: "MyMTN App Report",
+      date: new Date("2025-01-23"),
+      assigner: "Blessing Musa",
+      status: "overdue",
+    },
+    {
+      id: "728ed52f",
+      name: "UX Report",
+      date: new Date("2025-02-02"),
+      assigner: "Blessing Musa",
+      status: "upcoming",
+    },
+    {
+      id: "728ed52f",
+      name: "My Lagos App Design",
+      date: new Date("2025-01-19"),
+      assigner: "Blessing Musa",
+      status: "overdue",
+    },
+    {
+      id: "728ed52f",
+      name: "MyMTN App Redesign",
+      date: new Date("2025-01-20"),
+      assigner: "Blessing Musa",
+      status: "upcoming",
+    },
+    {
+      id: "728ed52f",
+      name: "UX Report",
+      date: new Date("2025-01-21"),
+      assigner: "Blessing Musa",
+      status: "completed",
+    },
+    {
+      id: "728ed52f",
+      name: "UX Report",
+      date: new Date("2025-01-22"),
+      assigner: "Blessing Musa",
+      status: "completed",
+    },
+    {
+      id: "728ed52f",
+      name: "MyMTN App Report",
+      date: new Date("2025-01-23"),
+      assigner: "Blessing Musa",
+      status: "overdue",
+    },
   ];
 
   const projectCount = {
@@ -87,7 +318,7 @@ export default async function MilestonesPage() {
             </span>
           </div>
           <div className="grid gap-6 max-w-[1050px] md:grid-cols-[repeat(auto-fit,_minmax(280px,1fr))]">
-            <div className="bg-white p-6 rounded-xl space-y-6">
+            <div className="bg-white p-6 rounded-xl space-y-6 border border-muted-foreground-50">
               <div className="flex items-center gap-6">
                 <CircleCheckBig className="w-10 h-10 text-[rgb(173,138,0)] bg-[rgb(255,247,217)] p-2.5 rounded-full" />
                 <span className="font-medium leading-6">Completed</span>
@@ -96,7 +327,7 @@ export default async function MilestonesPage() {
                 {projectCount["completed"]}
               </span>
             </div>
-            <div className="bg-white p-6 rounded-xl space-y-6">
+            <div className="bg-white p-6 rounded-xl space-y-6 border border-muted-foreground-50">
               <div className="flex items-center gap-6">
                 <CircleDot className="w-10 h-10 text-[rgb(173,138,0)] bg-[rgb(255,247,217)] p-2.5 rounded-full" />
                 <span className="font-medium leading-6">Upcoming</span>
@@ -105,7 +336,7 @@ export default async function MilestonesPage() {
                 {projectCount["upcoming"]}
               </span>
             </div>
-            <div className="bg-white p-6 rounded-xl space-y-6">
+            <div className="bg-white p-6 rounded-xl space-y-6 border border-muted-foreground-50">
               <div className="flex items-center gap-6">
                 <Ban className="w-10 h-10 text-[rgb(173,138,0)] bg-[rgb(255,247,217)] p-2.5 rounded-full" />
                 <span className="font-medium leading-6">Overdue</span>

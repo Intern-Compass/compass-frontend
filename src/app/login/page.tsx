@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { Separator } from "@/components/ui/separator";
+
 import { LoginForm } from "@/app/login/login-form";
 
 export default function LoginPage() {
@@ -46,7 +48,10 @@ export default function LoginPage() {
               <a href="https://www.mtn.ng/legal/" target="_blank">
                 Terms & Conditions
               </a>
-              <div className="bg-border h-2.5 w-px" />
+              <Separator
+                orientation="vertical"
+                className="!h-2.5 bg-border"
+              />
               <a
                 href="https://www.mtn.ng/legal/privacy-and-data-protection-policy"
                 target="_blank"

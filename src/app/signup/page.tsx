@@ -1,6 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
 
+import { Separator } from "@/components/ui/separator";
+
 import { SignupForm } from "@/app/signup/signup-form";
 
 export default function SignupPage() {
@@ -46,7 +48,7 @@ export default function SignupPage() {
               <a href="https://www.mtn.ng/legal/" target="_blank">
                 Terms & Conditions
               </a>
-              <div className="bg-border h-2.5 w-px" />
+              <Separator orientation="vertical" className="!h-2.5 bg-border" />
               <a
                 href="https://www.mtn.ng/legal/privacy-and-data-protection-policy"
                 target="_blank"

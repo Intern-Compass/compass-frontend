@@ -22,8 +22,8 @@ export function DataTableToolbar<TData>({
   return (
     <div className="flex items-center justify-between">
       <div className="flex flex-1 items-center gap-2">
-        <div className="relative flex items-center py-4">
-          <Search className="w-4 h-4 absolute left-2 top-1/2 -translate-y-1/2" />
+        <div className="relative flex-1 flex items-center py-4">
+          <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2" />
 
           <Input
             placeholder="Search by projects"
@@ -31,7 +31,7 @@ export function DataTableToolbar<TData>({
             onChange={(event) =>
               table.getColumn("name")?.setFilterValue(event.target.value)
             }
-            className="max-w-sm pl-8 text-foreground leading-6 placeholder:text-muted-foreground"
+            className="p-3 pl-9 text-foreground leading-6 placeholder:text-muted-foreground/60"
           />
         </div>
         {table.getColumn("status") && (

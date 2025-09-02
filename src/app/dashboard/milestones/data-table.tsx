@@ -71,17 +71,20 @@ export function DataTable<TData, TValue>({
   });
 
   return (
-    <div>
+    <div className="max-w-246">
       <DataTableToolbar table={table} />
 
       <div className="overflow-hidden rounded-md border mb-4">
         <Table>
-          <TableHeader>
+          <TableHeader className="bg-muted">
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => {
                   return (
-                    <TableHead key={header.id}>
+                    <TableHead
+                      key={header.id}
+                      className="text-muted-foreground"
+                    >
                       {header.isPlaceholder
                         ? null
                         : flexRender(
@@ -102,7 +105,7 @@ export function DataTable<TData, TValue>({
                   data-state={row.getIsSelected() && "selected"}
                 >
                   {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id}>
+                    <TableCell key={cell.id} className="px-2">
                       {flexRender(
                         cell.column.columnDef.cell,
                         cell.getContext()

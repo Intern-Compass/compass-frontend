@@ -22,11 +22,22 @@ interface DataTablePaginationProps<TData> {
 export function DataTablePagination<TData>({
   table,
 }: DataTablePaginationProps<TData>) {
+  const pagination = table.getState().pagination;
+  const pageIndex = pagination.pageIndex;
+  const pageSize = pagination.pageSize;
+  const totalFilteredRows = table.getFilteredRowModel().rows.length;
+
+  const startRow = pageIndex * pageSize + 1;
+  const endRow = Math.min((pageIndex + 1) * pageSize, totalFilteredRows);
+
   return (
     <div className="flex items-center justify-between px-2">
       <div className="text-muted-foreground flex-1 text-sm">
         {table.getFilteredSelectedRowModel().rows.length} of{" "}
         {table.getFilteredRowModel().rows.length} row(s) selected.
+      </div>
+      <div>
+        Pages {startRow} - {endRow} of {totalFilteredRows}
       </div>
       <div className="flex items-center space-x-6 lg:space-x-8">
         <div className="flex items-center space-x-2">

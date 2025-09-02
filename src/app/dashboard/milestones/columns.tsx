@@ -5,6 +5,7 @@ import { ColumnDef } from "@tanstack/react-table";
 
 import { MoreHorizontal } from "lucide-react";
 
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -100,7 +101,7 @@ export const columns: ColumnDef<Project>[] = [
       const status: Status = row.getValue("status");
 
       return (
-        <span
+        <Badge
           className={cn(
             "capitalize font-medium text-xs leading-4 py-0.5 px-2.5 rounded-[9999px]",
             status === "upcoming" && "bg-warning-light text-warning-dark",
@@ -109,7 +110,7 @@ export const columns: ColumnDef<Project>[] = [
           )}
         >
           {status}
-        </span>
+        </Badge>
       );
     },
     filterFn: "arrIncludesSome",
